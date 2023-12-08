@@ -22,6 +22,14 @@ public class UserController {
         return "users";
     }
 
+    @GetMapping("/users_read_only")
+    public String showReadUserList(Model model){
+        List<User> listUsers = service.listAll();
+        model.addAttribute("listUsers", listUsers);
+
+        return "users_read_only";
+    }
+
     @GetMapping("/users/new")
     public String showNewForm(Model model){
         model.addAttribute("user", new User());
